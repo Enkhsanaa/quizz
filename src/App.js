@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  localStorage.setItem("checkQuiz", 1);
   let history = useHistory();
   const getUserName = (e) => {
     console.log(e.target.value);

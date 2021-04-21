@@ -22,6 +22,7 @@ function TeamTwo() {
         .then((res) => res.json())
         .then((res) => {
           setQuiz(res.quiz.text);
+          setAnswer(res.correct.letter);
           console.log(res);
         });
     }, 5000);
@@ -29,7 +30,7 @@ function TeamTwo() {
   }, []);
 
   const [quiz, setQuiz] = useState("");
-  const [round, setRound] = useState("");
+  const [answer, setAnswer] = useState("");
 
   return (
     <div className="main">
@@ -38,6 +39,7 @@ function TeamTwo() {
           <img src={bg1}></img>
         </div>
         <div className="question-text">{quiz}</div>
+        <div className="answer">{answer}</div>
       </>
     </div>
   );

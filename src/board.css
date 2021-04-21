@@ -24,6 +24,36 @@
   cursor: pointer;
 }
 
+.board-button {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(18, 193, 199);
+  outline: none;
+  border: 1px solid white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.board-button1 {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(18, 193, 199);
+  outline: none;
+  border: 1px solid white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .board .board-one {
   font-size: 40px;
   color: #333333;
@@ -38,4 +68,19 @@
   padding: 150px;
   border-radius: 20px;
   font-weight: bold;
+}
+
+.answer {
+  position: absolute;
+  bottom: 15%;
+  font-size: 75px;
+  border: 6px solid #4bff57;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
