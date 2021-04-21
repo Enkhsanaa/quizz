@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, useLocation } from "react-router-dom";
+import "./board.css";
 
 function Board() {
   const location = useLocation();
@@ -23,12 +24,12 @@ function Board() {
       });
   };
   return (
-    <div>
+    <div className="board">
       <button onClick={seeScore}>Оноо харах</button>
 
       {score.map((a) => {
         return (
-          <div>
+          <div className="board-one">
             <p>{a.username}</p>
             <p>{a.score}</p>
           </div>

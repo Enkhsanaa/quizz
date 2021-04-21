@@ -30,6 +30,7 @@ function App() {
       .then((res) => {
         console.log(res);
         if (res.role === 1) {
+          localStorage.setItem("userToken", res.token);
           history.push({
             pathname: "/one",
 
@@ -37,6 +38,7 @@ function App() {
           });
         }
         if (res.role === 0) {
+          localStorage.setItem("adminToken", res.token);
           history.push({
             pathname: "/admin",
             state: { detail: res.token },

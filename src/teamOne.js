@@ -25,9 +25,17 @@ function TeamOne() {
           setAnswer(res.answer);
           setQuiz(res.quiz.text);
           setRound(res.quiz.category);
+          setNumber(res.quiz.number);
           console.log(res);
+          if (number < res.quiz.number) {
+            setCounter(0);
+            setClass1("one");
+            setClass2("one");
+            setClass3("one");
+            setClass4("one");
+          }
         });
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -39,6 +47,7 @@ function TeamOne() {
   const [answer, setAnswer] = useState([]);
   const [quiz, setQuiz] = useState("");
   const [round, setRound] = useState("");
+  const [number, setNumber] = useState(0);
 
   //   setInterval(() => {
   //     fetch("http://sta.api.cashone.mn/api/get_quiz", {
@@ -165,8 +174,25 @@ function TeamOne() {
         )
       ) : round === "truefalse" ? (
         <>
-          <div className="bg">
+          <div className="bg1">
             <img src={bg2}></img>
+          </div>
+          <div className="question-text1">{quiz}</div>
+          <div className="question-main">
+            <div className="sub">
+              <div onClick={() => chooseAnswer(1)} className={classChoose1}>
+                {answer[0].text}
+              </div>
+              <div onClick={() => chooseAnswer(2)} className={classChoose2}>
+                {answer[1].text}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : round === "choose" ? (
+        <>
+          <div className="bg">
+            <img src={bg1}></img>
           </div>
           <div className="question-text">{quiz}</div>
           <div className="question-main">
@@ -176,6 +202,14 @@ function TeamOne() {
               </div>
               <div onClick={() => chooseAnswer(2)} className={classChoose2}>
                 {answer[1].text}
+              </div>
+            </div>
+            <div className="sub">
+              <div onClick={() => chooseAnswer(3)} className={classChoose3}>
+                {answer[2].text}
+              </div>
+              <div onClick={() => chooseAnswer(4)} className={classChoose4}>
+                {answer[3].text}
               </div>
             </div>
           </div>
