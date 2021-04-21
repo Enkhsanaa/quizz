@@ -84,3 +84,73 @@
   align-items: center;
   justify-content: center;
 }
+
+.team-answer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.team-answer .sub {
+  text-align: center;
+  width: 50%;
+}
+
+.admin-panel button {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(18, 193, 199);
+  outline: none;
+  border: 1px solid white;
+  margin-top: 100px;
+  margin-right: 20px;
+
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.admin-panel {
+  text-align: center;
+}
+
+.green {
+  color: greenyellow;
+  text-align: center;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red {
+  color: red;
+  text-align: center;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.normal {
+  color: black;
+  text-align: center;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answer-board-team {
+  border: 1px solid rgb(15, 187, 255);
+  border-radius: 20px;
+  padding: 20px;
+  width: 50%;
+  background-color: rgb(64, 147, 235);
+  opacity: 0.8;
+}

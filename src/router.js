@@ -5,6 +5,8 @@ import TeamTwo from "./teamTwo";
 import Admin from "./admin";
 import Board from "./board";
 import App from "./App";
+import Answer from "./answer";
+import Check from "./check";
 
 export default function QuizRouter() {
   return (
@@ -24,6 +26,12 @@ export default function QuizRouter() {
         </Route>
         <Route path="/board">
           <Board />
+        </Route>
+        <Route path="/answer">
+          <Answer />
+        </Route>
+        <Route path="/check">
+          <Check />
         </Route>
       </Switch>
     </Router>

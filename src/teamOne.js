@@ -34,6 +34,8 @@ function TeamOne() {
           //   setNumber(res.quiz.number);
           console.log(localStorage.getItem("checkQuiz"));
           console.log(res);
+          setQuizNumber(res.quiz.number);
+          setCopy(res.quiz.is_copy);
           if (localStorage.getItem("checkQuiz") < res.quiz.number) {
             console.log(localStorage.getItem("checkQuiz"), res.quiz.number);
             setCounter(0);
@@ -57,6 +59,8 @@ function TeamOne() {
   const [quiz, setQuiz] = useState("");
   const [round, setRound] = useState("");
   const [number, setNumber] = useState(1);
+  const [quizNumber, setQuizNumber] = useState(1);
+  const [copy, setCopy] = useState("");
 
   //   setInterval(() => {
   //     fetch("http://sta.api.cashone.mn/api/get_quiz", {
@@ -86,7 +90,7 @@ function TeamOne() {
           Authorization: `Bearer ${location.state.detail}`,
         },
         body: JSON.stringify({
-          quiz_number: 1,
+          quiz_number: quizNumber,
           letter: "A",
         }),
       })
@@ -104,7 +108,7 @@ function TeamOne() {
           Authorization: `Bearer ${location.state.detail}`,
         },
         body: JSON.stringify({
-          quiz_number: 1,
+          quiz_number: quizNumber,
           letter: "B",
         }),
       })
@@ -122,7 +126,7 @@ function TeamOne() {
           Authorization: `Bearer ${location.state.detail}`,
         },
         body: JSON.stringify({
-          quiz_number: 1,
+          quiz_number: quizNumber,
           letter: "C",
         }),
       })
@@ -140,8 +144,26 @@ function TeamOne() {
           Authorization: `Bearer ${location.state.detail}`,
         },
         body: JSON.stringify({
-          quiz_number: 1,
+          quiz_number: quizNumber,
           letter: "D",
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        });
+    } else if (e === 9 && counter === 0) {
+      // setClass4("chosen");
+      setCounter(1);
+      fetch("http://sta.api.cashone.mn/api/answer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${location.state.detail}`,
+        },
+        body: JSON.stringify({
+          quiz_number: quizNumber,
+          letter: "W",
         }),
       })
         .then((res) => res.json())
@@ -156,6 +178,12 @@ function TeamOne() {
       {round === "who" ? (
         answer.length !== 0 ? (
           <>
+            {copy === 1 ? (
+              <div className="copy" onClick={() => chooseAnswer(9)}>
+                Хуулах
+              </div>
+            ) : null}
+
             <div className="bg">
               <img src={bg1}></img>
             </div>
@@ -228,6 +256,11 @@ function TeamOne() {
         )
       ) : round === "truefalse" ? (
         <>
+          {copy === 1 ? (
+            <div className="copy" onClick={() => chooseAnswer(9)}>
+              Хуулах
+            </div>
+          ) : null}
           <div className="bg1">
             <img src={bg2}></img>
           </div>
@@ -249,6 +282,11 @@ function TeamOne() {
         </>
       ) : round === "choose" ? (
         <>
+          {copy === 1 ? (
+            <div className="copy" onClick={() => chooseAnswer(9)}>
+              Хуулах
+            </div>
+          ) : null}
           <div className="bg">
             <img src={bg1}></img>
           </div>
