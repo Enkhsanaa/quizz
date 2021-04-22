@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, useLocation } from "react-router-dom";
-import "./board.css";
+import "./../css/board.css";
+import url from "./module";
 
 function Board() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function Board() {
     console.log(localStorage.getItem("adminToken"));
   }, [location]);
   const seeScore = () => {
-    fetch("http://192.168.10.100:8000/api/get_score", {
+    fetch(`${url.base}/api/get_score`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

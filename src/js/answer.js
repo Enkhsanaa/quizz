@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, useLocation } from "react-router-dom";
-import "./board.css";
-import vid from "./video.mp4";
+import "./../css/board.css";
+import vid from "./../images/video.mp4";
+import url from "./module";
 
 function Answer() {
   const location = useLocation();
-  const [answer, setAnswer] = useState("normal");
   const [answer1, setAnswer1] = useState({});
   const [answer2, setAnswer2] = useState({});
   const [show, setShow] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://192.168.10.100:8000/api/user_answer", {
-        //   fetch("http://202.21.123.43:8082http://192.168.10.100:8000/", {
+      fetch(`${url.base}/api/user_answer`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -25,6 +24,8 @@ function Answer() {
           setAnswer1(res[0]);
           setAnswer2(res[1]);
           console.log(res);
+          localStorage.setItem("team1", res[0].username);
+          localStorage.setItem("team2", res[1].username);
           if (localStorage.getItem("videoPlay") == 1) {
             setShow(true);
           } else {
@@ -49,7 +50,9 @@ function Answer() {
             }
           >
             <div className="answer-board-team">
-              <div>{answer1.username}</div>
+              <div>Багийн нэр:</div>
+              <div style={{ marginBottom: "20px" }}>{answer1.username}</div>
+              <div>Хариулт:</div>
               <div>{answer1.answer_letter}</div>
             </div>
           </div>
@@ -63,7 +66,9 @@ function Answer() {
             }
           >
             <div className="answer-board-team">
-              <div>{answer2.username}</div>
+              <div>Багийн нэр:</div>
+              <div style={{ marginBottom: "20px" }}>{answer2.username}</div>
+              <div>Хариулт:</div>
               <div>{answer2.answer_letter}</div>
             </div>
           </div>

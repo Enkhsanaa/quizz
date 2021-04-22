@@ -6,3 +6,7 @@
   height: 100vh;
   flex-direction: column;
 }
+
+body {
+  margin: 0;
+}

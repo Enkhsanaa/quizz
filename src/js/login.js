@@ -1,11 +1,13 @@
-import "./App.css";
+import "./../css/App.css";
 import { useHistory } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import url from "./module";
 
 function App() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   localStorage.setItem("checkQuiz", 1);
+
   let history = useHistory();
   const getUserName = (e) => {
     console.log(e.target.value);
@@ -17,7 +19,7 @@ function App() {
   };
 
   const login = () => {
-    fetch("http://192.168.10.100:8000/api/login", {
+    fetch(`${url.base}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +48,6 @@ function App() {
           });
         }
       });
-    console.log("qwe");
   };
 
   return (

@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, useLocation } from "react-router-dom";
-import "./question.css";
-import bg1 from "./bg1.png";
-import bg2 from "./bg2.png";
-import blue from "./blue.png";
-import green from "./green.png";
-import orange from "./orange.png";
-import red from "./red.png";
-import unen from "./unen.png";
-import hudal from "./hudal.png";
+import "./../css/check.css";
+import bg1 from "./../images/bg1.png";
+import bg2 from "./../images/bg2.png";
+import blue from "./../images/blue.png";
+import green from "./../images/green.png";
+import orange from "./../images/orange.png";
+import red from "./../images/red.png";
+import unen from "./../images/unen.png";
+import hudal from "./../images/hudal.png";
+import url from "./module";
 
-function TeamOne() {
+function Check() {
   const location = useLocation();
   useEffect(() => {
     console.log(location.pathname); // result: '/secondpage'
-    console.log(location.state.detail); // result: 'some_value'
   }, [location]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://192.168.10.100:8000/api/get_quiz", {
+      fetch(`${url.base}/api/get_quiz`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${location.state.detail}`,
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       })
         .then((res) => res.json())
@@ -31,7 +31,7 @@ function TeamOne() {
           setAnswer(res.answer);
           setQuiz(res.quiz.text);
           setRound(res.quiz.category);
-          //   setNumber(res.quiz.number);
+          setNumber(1);
           console.log(localStorage.getItem("checkQuiz"));
           console.log(res);
           setQuizNumber(res.quiz.number);
@@ -46,7 +46,7 @@ function TeamOne() {
             localStorage.setItem("checkQuiz", res.quiz.number);
           }
         });
-    }, 8000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -62,29 +62,18 @@ function TeamOne() {
   const [quizNumber, setQuizNumber] = useState(1);
   const [copy, setCopy] = useState("");
 
-  //   setInterval(() => {
-  //     fetch("http://192.168.10.100:8000/api/get_quiz", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${location.state.detail}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((res) => {
-  //         setAnswer(res.answer);
-  //         console.log(res);
-  //       });
-  //   }, 5000);
-
   const chooseAnswer = (e) => {
     console.log(number);
     console.log(counter);
-    if (e === 1) {
+    console.log(classChoose1);
+    console.log(classChoose2);
+    console.log(classChoose3);
+    console.log(classChoose4);
+    console.log(copy);
+    if (e === 1 && counter === 0) {
       setClass1("chosen");
-      alert("A");
       setCounter(1);
-      fetch("http://192.168.10.100:8000/api/answer", {
+      fetch(`${url.base}/api/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,11 +88,10 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 2) {
+    } else if (e === 2 && counter === 0) {
       setClass2("chosen");
-      alert("B");
       setCounter(1);
-      fetch("http://192.168.10.100:8000/api/answer", {
+      fetch(`${url.base}/api/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,11 +106,10 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 3) {
+    } else if (e === 3 && counter === 0) {
       setClass3("chosen");
-      alert("C");
       setCounter(1);
-      fetch("http://192.168.10.100:8000/api/answer", {
+      fetch(`${url.base}/api/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -137,11 +124,10 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 4) {
+    } else if (e === 4 && counter === 0) {
       setClass4("chosen");
-      alert("D");
       setCounter(1);
-      fetch("http://192.168.10.100:8000/api/answer", {
+      fetch(`${url.base}/api/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -156,11 +142,10 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 9) {
+    } else if (e === 9 && counter === 0) {
       // setClass4("chosen");
       setCounter(1);
-      alert("Хуулах");
-      fetch("http://192.168.10.100:8000/api/answer", {
+      fetch(`${url.base}/api/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -168,7 +153,7 @@ function TeamOne() {
         },
         body: JSON.stringify({
           quiz_number: quizNumber,
-          letter: "Z",
+          letter: "W",
         }),
       })
         .then((res) => res.json())
@@ -183,16 +168,10 @@ function TeamOne() {
       {round === "who" ? (
         answer.length !== 0 ? (
           <>
-            {copy === 1 ? (
-              <div className="copy" onClick={() => chooseAnswer(9)}>
-                Хуулах
-              </div>
-            ) : null}
-
-            <div className="bg">
-              <img src={bg1}></img>
+            <div className="check-bg">
+              <img alt="none" src={bg1}></img>
             </div>
-            <div className="question-text">{quiz}</div>
+            <div className="check-text">{quiz}</div>
             {/* <div className="sub">
                 <div onClick={() => chooseAnswer(1)} className={classChoose1}>
                   {answer[0].text}
@@ -209,44 +188,32 @@ function TeamOne() {
                   {answer[3].text}
                 </div>
               </div> */}
-            <div className="question-main">
+            <div className="check-main">
               {answer.map((a, i) => {
                 return (
                   <>
                     <div className="sub">
                       {i === 0 ? (
-                        <div
-                          className="classChooseContainer"
-                          onClick={() => chooseAnswer(i + 1)}
-                        >
-                          <img src={blue}></img>
+                        <div className="classChooseContainer">
+                          <img alt="none" src={blue}></img>
                           <div className={`classChoose`}>{a.text}</div>
                         </div>
                       ) : null}
                       {i === 1 ? (
-                        <div
-                          className="classChooseContainer"
-                          onClick={() => chooseAnswer(i + 1)}
-                        >
-                          <img src={green}></img>
+                        <div className="classChooseContainer">
+                          <img alt="none" src={green}></img>
                           <div className={`classChoose`}>{a.text}</div>
                         </div>
                       ) : null}
                       {i === 2 ? (
-                        <div
-                          className="classChooseContainer"
-                          onClick={() => chooseAnswer(i + 1)}
-                        >
-                          <img src={orange}></img>
+                        <div className="classChooseContainer">
+                          <img alt="none" src={orange}></img>
                           <div className={`classChoose`}>{a.text}</div>
                         </div>
                       ) : null}
                       {i === 3 ? (
-                        <div
-                          className="classChooseContainer"
-                          onClick={() => chooseAnswer(i + 1)}
-                        >
-                          <img src={red}></img>
+                        <div className="classChooseContainer">
+                          <img alt="none" src={red}></img>
                           <div className={`classChoose`}>{a.text}</div>
                         </div>
                       ) : null}
@@ -261,25 +228,20 @@ function TeamOne() {
         )
       ) : round === "truefalse" ? (
         <>
-          {copy === 1 ? (
-            <div className="copy" onClick={() => chooseAnswer(9)}>
-              Хуулах
-            </div>
-          ) : null}
-          <div className="bg1">
-            <img src={bg2}></img>
+          <div className="check-bg1">
+            <img alt="none" src={bg2}></img>
           </div>
-          <div className="question-text1">{quiz}</div>
-          <div className="question-main">
+          <div className="check-text1">{quiz}</div>
+          <div className="check-main">
             <div className="sub">
               <div onClick={() => chooseAnswer(1)}>
-                <img src={unen}></img>
+                <img alt="none" src={unen}></img>
                 {/* <div className={classChoose2}>{answer[0].text}</div> */}
               </div>
             </div>
             <div className="sub">
               <div onClick={() => chooseAnswer(2)}>
-                <img src={hudal}></img>
+                <img alt="none" src={hudal}></img>
                 {/* <div className={classChoose1}>{answer[1].text}</div> */}
               </div>
             </div>
@@ -287,53 +249,36 @@ function TeamOne() {
         </>
       ) : round === "choose" ? (
         <>
-          {copy === 1 ? (
-            <div className="copy" onClick={() => chooseAnswer(9)}>
-              Хуулах
-            </div>
-          ) : null}
-          <div className="bg">
-            <img src={bg1}></img>
+          <div className="check-bg">
+            <img alt="none" src={bg1}></img>
           </div>
-          <div className="question-text">{quiz}</div>
-          <div className="question-main">
+          <div className="check-text">{quiz}</div>
+          <div className="check-main">
             {answer.map((a, i) => {
               return (
                 <>
                   <div className="sub">
                     {i === 0 ? (
-                      <div
-                        className="classChooseContainer"
-                        onClick={() => chooseAnswer(i + 1)}
-                      >
-                        <img src={blue}></img>
+                      <div className="classChooseContainer">
+                        <img alt="none" src={blue}></img>
                         <div className={`classChoose`}>{a.text}</div>
                       </div>
                     ) : null}
                     {i === 1 ? (
-                      <div
-                        className="classChooseContainer"
-                        onClick={() => chooseAnswer(i + 1)}
-                      >
-                        <img src={green}></img>
+                      <div className="classChooseContainer">
+                        <img alt="none" src={green}></img>
                         <div className={`classChoose`}>{a.text}</div>
                       </div>
                     ) : null}
                     {i === 2 ? (
-                      <div
-                        className="classChooseContainer"
-                        onClick={() => chooseAnswer(i + 1)}
-                      >
-                        <img src={orange}></img>
+                      <div className="classChooseContainer">
+                        <img alt="none" src={orange}></img>
                         <div className={`classChoose`}>{a.text}</div>
                       </div>
                     ) : null}
                     {i === 3 ? (
-                      <div
-                        className="classChooseContainer"
-                        onClick={() => chooseAnswer(i + 1)}
-                      >
-                        <img src={red}></img>
+                      <div className="classChooseContainer">
+                        <img alt="none" src={red}></img>
                         <div className={`classChoose`}>{a.text}</div>
                       </div>
                     ) : null}
@@ -341,22 +286,6 @@ function TeamOne() {
                 </>
               );
             })}
-            {/* <div className="sub">
-              <div onClick={() => chooseAnswer(1)} className={classChoosee1}>
-                {answer[0].text}
-              </div>
-              <div onClick={() => chooseAnswer(2)} className={classChoose2}>
-                {answer[1].text}
-              </div>
-            </div>
-            <div className="sub">
-              <div onClick={() => chooseAnswer(3)} className={classChoose3}>
-                {answer[2].text}
-              </div>
-              <div onClick={() => chooseAnswer(4)} className={classChoose4}>
-                {answer[3].text}
-              </div>
-            </div> */}
           </div>
         </>
       ) : null}
@@ -364,4 +293,4 @@ function TeamOne() {
   );
 }
 
-export default withRouter(TeamOne);
+export default withRouter(Check);

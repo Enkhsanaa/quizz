@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, useLocation } from "react-router-dom";
-import "./question.css";
-import bg1 from "./bg1.png";
-import bg2 from "./bg2.png";
+import "./../css/question.css";
+import bg1 from "./../images/bg1.png";
+import url from "./module";
 
 function TeamTwo() {
   const location = useLocation();
@@ -12,7 +12,7 @@ function TeamTwo() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://192.168.10.100:8000/api/get_quiz", {
+      fetch(`${url.base}/api/get_quiz`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function TeamTwo() {
     <div className="main">
       <>
         <div className="bg">
-          <img src={bg1}></img>
+          <img alt="none" src={bg1}></img>
         </div>
         <div className="question-text">{quiz}</div>
         <div className="answer">{answer}</div>

@@ -1,26 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import TeamOne from "./teamOne";
-import TeamTwo from "./teamTwo";
+import TeamOne from "./tabletView";
 import Admin from "./admin";
-import Board from "./board";
-import App from "./App";
+import Board from "./scoreBoard";
+import Login from "./login";
 import Answer from "./answer";
-import Check from "./check";
+import Check from "./checkScreen";
 
 export default function QuizRouter() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <App />
+          <Login />
         </Route>
         <Route path="/one">
           <TeamOne />
         </Route>
-        <Route path="/two">
+        {/* <Route path="/two">
           <TeamTwo />
-        </Route>
+        </Route> */}
         <Route path="/admin">
           <Admin />
         </Route>
