@@ -10,7 +10,7 @@ function Board() {
     console.log(localStorage.getItem("adminToken"));
   }, [location]);
   const seeScore = () => {
-    fetch("http://sta.api.cashone.mn/api/get_score", {
+    fetch("http://192.168.10.100:8000/api/get_score", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

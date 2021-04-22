@@ -17,7 +17,7 @@ function Admin() {
     localStorage.setItem("adminToken", location.state.detail);
   }, [location]);
   const getNext = () => {
-    fetch("http://sta.api.cashone.mn/api/next_quiz", {
+    fetch("http://192.168.10.100:8000/api/next_quiz", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,8 +34,8 @@ function Admin() {
   };
 
   const getCorrect = () => {
-    // fetch(`http://sta.api.cashone.mn/api/get_correct/${id}`, {
-    fetch(`http://sta.api.cashone.mn/api/get_correct/1`, {
+    // fetch(`http://192.168.10.100:8000/api/get_correct/${id}`, {
+    fetch(`http://192.168.10.100:8000/api/get_correct/1`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,8 +49,8 @@ function Admin() {
   };
 
   const startTimer = () => {
-    // fetch(`http://sta.api.cashone.mn/api/get_correct/${id}`, {
-    fetch(`http://sta.api.cashone.mn/api/start_time`, {
+    // fetch(`http://192.168.10.100:8000/api/get_correct/${id}`, {
+    fetch(`http://192.168.10.100:8000/api/start_time`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -64,8 +64,8 @@ function Admin() {
   };
 
   const getCorrectAnswer = () => {
-    // fetch(`http://sta.api.cashone.mn/api/get_correct/${id}`, {
-    fetch(`http://sta.api.cashone.mn/api/correct_answer`, {
+    // fetch(`http://192.168.10.100:8000/api/get_correct/${id}`, {
+    fetch(`http://192.168.10.100:8000/api/correct_answer`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

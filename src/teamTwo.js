@@ -12,7 +12,7 @@ function TeamTwo() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://sta.api.cashone.mn/api/get_quiz", {
+      fetch("http://192.168.10.100:8000/api/get_quiz", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

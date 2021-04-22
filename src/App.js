@@ -17,7 +17,7 @@ function App() {
   };
 
   const login = () => {
-    fetch("http://sta.api.cashone.mn/api/login", {
+    fetch("http://192.168.10.100:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

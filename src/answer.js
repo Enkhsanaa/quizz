@@ -11,8 +11,8 @@ function Answer() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://sta.api.cashone.mn/api/user_answer", {
-        //   fetch("http://202.21.123.43:8082/api/user_answer", {
+      fetch("http://192.168.10.100:8000/api/user_answer", {
+        //   fetch("http://202.21.123.43:8082http://192.168.10.100:8000/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function Answer() {
             setShow(false);
           }
         });
-    }, 8000);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -55,9 +55,9 @@ function Answer() {
           </div>
           <div
             className={
-              answer1.status === 1
+              answer2.status === 1
                 ? "green"
-                : answer1.status === 2
+                : answer2.status === 2
                 ? "red"
                 : "normal"
             }

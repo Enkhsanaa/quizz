@@ -17,7 +17,7 @@ function Check() {
   }, [location]);
 
   useEffect(() => {
-    fetch("http://sta.api.cashone.mn/api/get_quiz", {
+    fetch("http://192.168.10.100:8000/api/get_quiz", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function Check() {
   const [copy, setCopy] = useState("");
 
   //   setInterval(() => {
-  //     fetch("http://sta.api.cashone.mn/api/get_quiz", {
+  //     fetch("http://192.168.10.100:8000/api/get_quiz", {
   //       method: "GET",
   //       headers: {
   //         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function Check() {
     if (e === 1 && counter === 0) {
       setClass1("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +97,7 @@ function Check() {
     } else if (e === 2 && counter === 0) {
       setClass2("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ function Check() {
     } else if (e === 3 && counter === 0) {
       setClass3("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +133,7 @@ function Check() {
     } else if (e === 4 && counter === 0) {
       setClass4("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -151,7 +151,7 @@ function Check() {
     } else if (e === 9 && counter === 0) {
       // setClass4("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

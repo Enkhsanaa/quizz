@@ -19,7 +19,7 @@ function TeamOne() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://sta.api.cashone.mn/api/get_quiz", {
+      fetch("http://192.168.10.100:8000/api/get_quiz", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ function TeamOne() {
   const [copy, setCopy] = useState("");
 
   //   setInterval(() => {
-  //     fetch("http://sta.api.cashone.mn/api/get_quiz", {
+  //     fetch("http://192.168.10.100:8000/api/get_quiz", {
   //       method: "GET",
   //       headers: {
   //         "Content-Type": "application/json",
@@ -80,10 +80,11 @@ function TeamOne() {
   const chooseAnswer = (e) => {
     console.log(number);
     console.log(counter);
-    if (e === 1 && counter === 0) {
+    if (e === 1) {
       setClass1("chosen");
+      alert("A");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,10 +99,11 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 2 && counter === 0) {
+    } else if (e === 2) {
       setClass2("chosen");
+      alert("B");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,10 +118,11 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 3 && counter === 0) {
+    } else if (e === 3) {
       setClass3("chosen");
+      alert("C");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,10 +137,11 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 4 && counter === 0) {
+    } else if (e === 4) {
       setClass4("chosen");
+      alert("D");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,10 +156,11 @@ function TeamOne() {
         .then((res) => {
           console.log(res);
         });
-    } else if (e === 9 && counter === 0) {
+    } else if (e === 9) {
       // setClass4("chosen");
       setCounter(1);
-      fetch("http://sta.api.cashone.mn/api/answer", {
+      alert("Хуулах");
+      fetch("http://192.168.10.100:8000/api/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,7 +168,7 @@ function TeamOne() {
         },
         body: JSON.stringify({
           quiz_number: quizNumber,
-          letter: "W",
+          letter: "Z",
         }),
       })
         .then((res) => res.json())
